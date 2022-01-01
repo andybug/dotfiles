@@ -13,6 +13,7 @@ general {
 
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
 order += "disk /home"
 order += "load"
 order += "memory"
@@ -26,6 +27,13 @@ wireless _first_ {
 ethernet _first_ {
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
+}
+
+volume "master" {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse"
+        #device = "pulse:alsa_output.pci-0000_0e_00.4.analog-stereo"
 }
 
 disk "/home" {
