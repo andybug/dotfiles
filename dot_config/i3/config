@@ -6,7 +6,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:DejaVu Sans Mono,monospace 10
+font pango:Noto Sans Mono,DejaVu Sans Mono,monospace 10
 
 # thin borders
 hide_edge_borders both
@@ -60,10 +60,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -240,7 +240,11 @@ gaps outer 10
 # gaps left 20
 
 bar {
-  status_command i3status
+  status_command    i3status
+  position          bottom
+  mode              hide
+  workspace_buttons yes
+  font              pango:Noto Sans Mono,Droid Sans Mono,monospace 11
 }
 
 # Autostart apps
