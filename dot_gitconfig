@@ -1,0 +1,21 @@
+[color]
+	ui = auto
+
+[user]
+	name = Andrew Fields
+	email = andy@andybug.com
+	signingkey = 52168E8A1136F7E7C4BD7B3792A37FCE13AD746B
+
+[diff]
+	tool = meld
+
+[push]
+	default = simple
+
+[alias]
+	log-graph = log --graph --decorate --oneline --all
+
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
