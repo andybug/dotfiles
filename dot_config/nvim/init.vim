@@ -15,15 +15,16 @@ filetype indent on
 set guifont=Noto\ Sans\ Mono:h11
 
 " color
+packadd! dracula
 syntax on
-colorscheme slate
+colorscheme dracula
 set background=dark
 
 " lines
 set number
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=black ctermfg=NONE guibg=black
-highlight CursorLineNR cterm=NONE ctermbg=black guibg=black
+highlight CursorLine cterm=NONE ctermbg=237 ctermfg=NONE guibg=black
+highlight CursorLineNR cterm=NONE ctermbg=237 guibg=black
 set linespace=2
 
 " tabs
