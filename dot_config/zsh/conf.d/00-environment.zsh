@@ -6,7 +6,7 @@ path=($HOME/.bin $path)
 # editor
 export EDITOR=nvim
 export VISUAL=nvim
-export PAGER=bat
+export MANPAGER='less -R --use-color -Dd+r -Du+b'
 
 # language
 export LC_ALL=en_US.UTF-8
