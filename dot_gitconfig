@@ -6,16 +6,40 @@
 	email = andy@andybug.com
 	signingkey = 52168E8A1136F7E7C4BD7B3792A37FCE13AD746B
 
-[diff]
-	tool = meld
-
 [push]
 	default = simple
 
-[alias]
-	log-graph = log --graph --decorate --oneline --all
-
 [commit]
 	gpgsign = true
+
 [init]
 	defaultBranch = main
+
+[merge]
+  conflictstyle = vdiff3
+
+[diff]
+  colorMoved = default
+
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --features=interactive
+
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true
+  line-numbers = true
+  paging = always
+  syntax-theme = Dracula
+  line-numbers-minus-style = "#ff5555"
+  line-numbers-zero-style = "#6272a4"
+  line-numbers-plus-style = "#50fa7b"
+
+  # minus-style = bold "#ff5555" "#44475a"
+  # minus-emph-style = bold "#f8f8f2" "#ff5555"
+  # zero-style = syntax "#282a36"
+  # plus-style = bold "#50fa7b" "#44475a"
+  # plus-emph-style = bold "#f8f8f2" "#50fa7b"
