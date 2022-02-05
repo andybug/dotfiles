@@ -1,5 +1,6 @@
 # path
 typeset -aU path  # only allow a path to appear once
+path=($HOME/.cargo/bin $path)
 path=($HOME/.local/bin $path)
 path=($HOME/.bin $path)
 
