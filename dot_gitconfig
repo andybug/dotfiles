@@ -18,39 +18,3 @@
 [merge]
   conflictstyle = diff3
 
-[core]
-  pager = delta
-
-[interactive]
-  diffFilter = delta --features=interactive
-
-
-[delta]
-  navigate = true  # use n and N to move between diff sections
-  dark = true
-  line-numbers = true
-  paging = always
-  syntax-theme = Dracula
-  line-numbers-minus-style = "#ff5555"
-  line-numbers-zero-style = "#6272a4"
-  line-numbers-plus-style = "#50fa7b"
-
-  # minus-style = bold "#ff5555" "#44475a"
-  # minus-emph-style = bold "#f8f8f2" "#ff5555"
-  # zero-style = syntax "#282a36"
-  # plus-style = bold "#50fa7b" "#44475a"
-  # plus-emph-style = bold "#f8f8f2" "#50fa7b"
-
-  #features=zebra-dark
-  #[delta "zebra-dark"]
-  #minus-style = syntax "#330f0f"
-  #minus-emph-style = syntax "#4f1917"
-  #plus-style = syntax "#0e2f19"
-  #plus-emph-style = syntax "#174525"
-  #map-styles = \
-  #   bold purple => syntax "#330f29", \
-  #   bold blue => syntax "#271344", \
-  #   bold cyan => syntax "#0d3531", \
-  #   bold yellow => syntax "#222f14"
-  #zero-style = syntax
-  #whitespace-error-style = "#aaaaaa"
