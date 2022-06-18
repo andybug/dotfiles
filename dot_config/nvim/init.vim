@@ -60,11 +60,15 @@ set nobackup
 set noswapfile
 set nowritebackup
 
+" spelling
+set spelllang=en
+set spellsuggest=best,10
+
 " keys
 imap jj <Esc>
 
-" disable mouse
-" set mouse=
+" enable mouse
+set mouse=a
 
 " whitespace
 set listchars=eol:$,tab:>.,trail:~,space:.
