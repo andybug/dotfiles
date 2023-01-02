@@ -5,7 +5,7 @@ alias lw='ll -snew'
 alias lt='ll --tree --color=always'
 
 alias vim=nvim
-alias nnn='nnn -e'
+alias nnn='nnn -eA'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 # aws
