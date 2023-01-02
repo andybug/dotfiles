@@ -268,6 +268,6 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 # Autostart apps
-exec --no-startup-id "feh --bg-fill --no-fehbg --randomize ~/pics/backgrounds/active.d/*"
+exec --no-startup-id "feh --bg-fill --no-fehbg ~/pics/backgrounds/wp5615348-cyberpunk-4k-wallpapers.jpg"
 exec --no-startup-id "redshift-gtk"
 
