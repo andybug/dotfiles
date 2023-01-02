@@ -1,3 +1,7 @@
 Host aur.archlinux.org
   IdentityFile ~/.ssh/aur
   User aur
+
+Host syncthing
+  Hostname 165.227.181.232
+  User root
