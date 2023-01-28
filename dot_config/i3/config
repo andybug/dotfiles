@@ -221,6 +221,9 @@ bindsym XF86AudioPrev exec playerctl previous
 # bindsym $mod+F7 exec mocp --previous
 # bindsym $mod+F8 exec mocp --next
 
+bindsym XF86LaunchA exec org.flameshot.Flameshot gui
+bindcode 248 exec org.flameshot.Flameshot screen
+
 # App shortcuts
 # bindsym $mod+w exec "/usr/bin/firefox"
 # bindsym $mod+n exec "/usr/bin/thunar"
