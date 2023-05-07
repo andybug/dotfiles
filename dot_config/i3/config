@@ -73,6 +73,9 @@ bindsym $mod+Shift+s layout stacking
 bindsym $mod+Shift+w layout tabbed
 bindsym $mod+Shift+e layout toggle split
 
+# sticky
+bindsym $mod+Shift+t sticky toggle
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -109,6 +112,18 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+# rename workspace
+bindsym $mod+Ctrl+1 rename workspace to 1
+bindsym $mod+Ctrl+2 rename workspace to 2
+bindsym $mod+Ctrl+3 rename workspace to 3
+bindsym $mod+Ctrl+4 rename workspace to 4
+bindsym $mod+Ctrl+5 rename workspace to 5
+bindsym $mod+Ctrl+6 rename workspace to 6
+bindsym $mod+Ctrl+7 rename workspace to 7
+bindsym $mod+Ctrl+8 rename workspace to 8
+bindsym $mod+Ctrl+9 rename workspace to 9
+bindsym $mod+Ctrl+0 rename workspace to 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -204,11 +219,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 # bindsym XF86AudioNext exec mpc next
 # bindsym XF86AudioPrev exec mpc prev
 
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioStop exec playerctl stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec  "playerctl --player spotify,\%any play-pause"
+bindsym XF86AudioPause exec "playerctl --player spotify,\%any play-pause"
+bindsym XF86AudioStop exec  "playerctl --player spotify,\%any stop"
+bindsym XF86AudioNext exec  "playerctl --player spotify,\%any next"
+bindsym XF86AudioPrev exec  "playerctl --player spotify,\%any previous"
 
 # bindsym XF86AudioPlay exec mocp --toggle-pause
 # bindsym XF86AudioPause exec mocp --toggle-pause
@@ -271,7 +286,7 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 # Autostart apps
-exec --no-startup-id "feh --bg-fill --no-fehbg ~/pics/backgrounds/soutwest-sunset.jpg"
+exec --no-startup-id "feh --bg-fill --no-fehbg /home/andy/pics/backgrounds/CNY_Artwork-en.jpg"
 exec --no-startup-id "redshift-gtk"
 exec --no-startup-id "xscreensaver --no-splash"
 
