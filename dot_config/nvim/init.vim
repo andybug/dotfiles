@@ -89,3 +89,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " buffer directory expansion
 cabbr <expr> %% expand('%:p:h')
+
+" yaml
+autocmd FileType yaml setlocal indentkeys-=0#
