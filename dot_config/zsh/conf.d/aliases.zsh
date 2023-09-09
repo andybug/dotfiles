@@ -1,8 +1,7 @@
-alias ls='exa --group-directories-first'
-alias ll='ls -l --time-style=long-iso --color-scale --git'
-alias la='ll -a'
-alias lw='ll -snew'
-alias lt='ll --tree --color=always'
+alias ls='lsd'
+alias ll='ls -l'
+alias la='ls -la'
+alias lt='ls --tree'
 
 alias vim=nvim
 alias nnn='nnn -eA'
