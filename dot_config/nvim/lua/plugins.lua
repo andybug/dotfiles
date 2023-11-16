@@ -16,14 +16,17 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "nvim-treesitter/nvim-treesitter",
   "Mofiqul/dracula.nvim",
+  { "folke/twilight.nvim", opts = { alpha = 0.10 } },
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   "nvim-tree/nvim-tree.lua",
+  "luukvbaal/nnn.nvim",
   "nvim-tree/nvim-web-devicons",
-  "neovim/nvim-lspconfig",
+  "sunjon/shade.nvim",
+  "lewis6991/gitsigns.nvim",
   "neovim/nvim-lspconfig",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
@@ -32,17 +35,41 @@ require("lazy").setup({
   "hrsh7th/nvim-cmp",
   "L3MON4D3/LuaSnip",
   "saadparwaiz1/cmp_luasnip",
+  "simrat39/rust-tools.nvim",
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/docs/neorg",
+              },
+            },
+          },
+        },
+      })
+    end,
+  },
+  -- {
+  --   "NeogitOrg/neogit",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",         -- required
+  --     "nvim-telescope/telescope.nvim", -- optional
+  --     "sindrets/diffview.nvim",        -- optional
+  --     "ibhagwan/fzf-lua",              -- optional
+  --   },
+  --   config = true
+  -- },
 })
 
 -- dracula
 vim.cmd("colorscheme dracula")
-
--- telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
@@ -65,6 +92,20 @@ require("nvim-treesitter.configs").setup({
     enable = true,
   },
 })
+
+-- shade
+require("shade").setup({
+  overlay_opacity = 60,
+  opacity_step = 1,
+  keys = {
+    -- brightness_up    = '<C-Up>',
+    -- brightness_down  = '<C-Down>',
+    toggle = "<leader>s",
+  },
+})
+
+-- gitsigns
+require("gitsigns").setup()
 
 -- nvim-cmp
 local cmp = require("cmp")
@@ -101,12 +142,37 @@ cmp.setup({
   }),
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- lspconfig
-local lspconfig = require("lspconfig")
-lspconfig.rust_analyzer.setup({
-  capabilities = capabilities,
-})
+-- TODO: remove
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--
+-- -- lspconfig
+-- local lspconfig = require("lspconfig")
+-- lspconfig.rust_analyzer.setup({
+--   capabilities = capabilities,
+-- })
 
 require("nvim-tree").setup()
+
+-- rust
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+--- nnn
+require("nnn").setup({
+  explorer = {
+    cmd = "nnn -A",
+  },
+  picker = {
+    cmd = "nnn -A",
+  },
+})

@@ -19,8 +19,8 @@ vim.cmd("filetype plugin on")
 vim.cmd("filetype indent on")
 
 -- GUI font
--- vim.o.guifont = "Noto Sans Mono:h11"
-vim.o.guifont = "NotoMono Nerd Font;h11"
+vim.o.guifont = "Noto Sans Mono:h11"
+-- vim.o.guifont = "NotoMono Nerd Font;h11"
 
 -- Line settings
 vim.o.number = true
