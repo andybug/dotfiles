@@ -56,6 +56,11 @@ require("lazy").setup({
       })
     end,
   },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
   -- {
   --   "NeogitOrg/neogit",
   --   dependencies = {
@@ -176,3 +181,18 @@ require("nnn").setup({
     cmd = "nnn -A",
   },
 })
+
+-- typescript
+require("typescript-tools").setup {
+  settings = {
+    tsserver_file_preferences = {
+      includeInlayParameterNameHints = "all",
+      includeCompletionsForModuleExports = true,
+      quotePreference = "auto",
+    },
+    -- tsserver_format_options = {
+    --   allowIncompleteCompletions = false,
+    --   allowRenameOfImportPath = false,
+    -- }
+  },
+}
