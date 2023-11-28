@@ -286,7 +286,7 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 # Autostart apps
-exec --no-startup-id "feh --bg-fill --no-fehbg ~/pics/backgrounds/alena-aenami/aenami_wallpaper_pack03/lost_in_between_4k.png"
+exec --no-startup-id "feh --bg-fill --no-fehbg /home/andy/pics/backgrounds/cyberpunk-2077/V-Origami-en.jpg"
 exec --no-startup-id "redshift-gtk"
 exec --no-startup-id "xscreensaver --no-splash"
 
