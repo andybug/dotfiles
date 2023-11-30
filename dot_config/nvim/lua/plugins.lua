@@ -50,6 +50,7 @@ if vim.g.neovide then
         require("neorg").setup({
           load = {
             ["core.defaults"] = {}, -- Loads default behaviour
+            ["core.export"] = {},
             ["core.concealer"] = {}, -- Adds pretty icons to your documents
             ["core.dirman"] = { -- Manages Neorg workspaces
               config = {
