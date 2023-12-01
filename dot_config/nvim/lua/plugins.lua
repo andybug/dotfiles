@@ -64,6 +64,11 @@ if vim.g.neovide then
         })
       end,
     },
+    -- todo
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+    },
     -- language-specific
     "simrat39/rust-tools.nvim",
     {
@@ -80,18 +85,6 @@ end
 
 -- lazy plugins
 require("lazy").setup(packages)
---{ "folke/twilight.nvim", opts = { alpha = 0.10 } },
---"sunjon/shade.nvim",
--- {
---   "NeogitOrg/neogit",
---   dependencies = {
---     "nvim-lua/plenary.nvim",         -- required
---     "nvim-telescope/telescope.nvim", -- optional
---     "sindrets/diffview.nvim",        -- optional
---     "ibhagwan/fzf-lua",              -- optional
---   },
---   config = true
--- },
 
 -- dracula
 vim.cmd("colorscheme dracula")
@@ -117,17 +110,6 @@ require("nvim-treesitter.configs").setup({
     enable = true,
   },
 })
-
--- shade
--- require("shade").setup({
---   overlay_opacity = 60,
---   opacity_step = 1,
---   keys = {
---     -- brightness_up    = '<C-Up>',
---     -- brightness_down  = '<C-Down>',
---     toggle = "<leader>s",
---   },
--- })
 
 -- nvim-tree
 require("nvim-tree").setup()
@@ -181,15 +163,6 @@ if vim.g.neovide then
     }),
   })
 
-  -- TODO: remove
-  -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  --
-  -- -- lspconfig
-  -- local lspconfig = require("lspconfig")
-  -- lspconfig.rust_analyzer.setup({
-  --   capabilities = capabilities,
-  -- })
-
   -- lsp
   local _border = "single"
 
@@ -208,6 +181,9 @@ if vim.g.neovide then
   require("lspconfig.ui.windows").default_options = {
     border = _border,
   }
+
+  -- todo
+  require("todo-comments").setup()
 
   -- rust
   local rt = require("rust-tools")
