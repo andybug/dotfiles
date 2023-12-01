@@ -57,6 +57,7 @@ if vim.g.neovide then
                 workspaces = {
                   notes = "~/docs/neorg",
                 },
+                default_workspace = "notes",
               },
             },
           },
@@ -79,18 +80,18 @@ end
 
 -- lazy plugins
 require("lazy").setup(packages)
-  --{ "folke/twilight.nvim", opts = { alpha = 0.10 } },
-  --"sunjon/shade.nvim",
-  -- {
-  --   "NeogitOrg/neogit",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",         -- required
-  --     "nvim-telescope/telescope.nvim", -- optional
-  --     "sindrets/diffview.nvim",        -- optional
-  --     "ibhagwan/fzf-lua",              -- optional
-  --   },
-  --   config = true
-  -- },
+--{ "folke/twilight.nvim", opts = { alpha = 0.10 } },
+--"sunjon/shade.nvim",
+-- {
+--   "NeogitOrg/neogit",
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",         -- required
+--     "nvim-telescope/telescope.nvim", -- optional
+--     "sindrets/diffview.nvim",        -- optional
+--     "ibhagwan/fzf-lua",              -- optional
+--   },
+--   config = true
+-- },
 
 -- dracula
 vim.cmd("colorscheme dracula")
@@ -130,7 +131,7 @@ require("nvim-treesitter.configs").setup({
 
 -- nvim-tree
 require("nvim-tree").setup()
-  
+
 --- nnn
 require("nnn").setup({
   explorer = {
@@ -141,15 +142,13 @@ require("nnn").setup({
   },
 })
 
-
 if vim.g.neovide then
-
   -- gitsigns
   require("gitsigns").setup()
 
   -- nvim-cmp
   local cmp = require("cmp")
-  
+
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -181,7 +180,7 @@ if vim.g.neovide then
       { name = "buffer" },
     }),
   })
-  
+
   -- TODO: remove
   -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
   --
@@ -194,29 +193,25 @@ if vim.g.neovide then
   -- lsp
   local _border = "single"
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover, {
-      border = _border
-    }
-  )
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = _border,
+  })
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, {
-      border = _border
-    }
-  )
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = _border,
+  })
 
-  vim.diagnostic.config{
-    float={border=_border}
-  }
+  vim.diagnostic.config({
+    float = { border = _border },
+  })
 
-  require('lspconfig.ui.windows').default_options = {
-    border = _border
+  require("lspconfig.ui.windows").default_options = {
+    border = _border,
   }
 
   -- rust
   local rt = require("rust-tools")
-  
+
   rt.setup({
     server = {
       on_attach = function(_, bufnr)
@@ -227,9 +222,9 @@ if vim.g.neovide then
       end,
     },
   })
-  
+
   -- typescript
-  require("typescript-tools").setup {
+  require("typescript-tools").setup({
     settings = {
       tsserver_file_preferences = {
         includeInlayParameterNameHints = "all",
@@ -241,6 +236,5 @@ if vim.g.neovide then
       --   allowRenameOfImportPath = false,
       -- }
     },
-  }
-
+  })
 end
