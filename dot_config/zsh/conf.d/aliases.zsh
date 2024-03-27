@@ -7,6 +7,7 @@ alias vim=nvim
 alias nnn='nnn -eA'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 alias i3config='vim ~/.config/i3/config'
+alias vlc=org.videolan.VLC
 
 # aws
 alias prod='aws-vault exec prod -- '
