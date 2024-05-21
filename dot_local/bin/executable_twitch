@@ -11,7 +11,7 @@ def main(stdscr):
 
     curses.curs_set(0)
 
-    options = ["summit1g", "atrioc", "jokerdtv"]  # Add your options here
+    options = ["summit1g", "atrioc", "jokerdtv", "ohnepixel"]  # Add your options here
     current_row = 0
 
     # Print options
