@@ -88,42 +88,51 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $ws1 "1:web"
+set $ws2 "2:term"
+set $ws8 "8:media"
+set $ws9 "9:games"
+set $ws10 "10:misc"
+
+workspace $ws8 gaps inner 0
+workspace $ws8 gaps outer 0
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # rename workspace
-bindsym $mod+Ctrl+1 rename workspace to 1
-bindsym $mod+Ctrl+2 rename workspace to 2
+bindsym $mod+Ctrl+1 rename workspace to $ws1
+bindsym $mod+Ctrl+2 rename workspace to $ws2
 bindsym $mod+Ctrl+3 rename workspace to 3
 bindsym $mod+Ctrl+4 rename workspace to 4
 bindsym $mod+Ctrl+5 rename workspace to 5
 bindsym $mod+Ctrl+6 rename workspace to 6
 bindsym $mod+Ctrl+7 rename workspace to 7
-bindsym $mod+Ctrl+8 rename workspace to 8
-bindsym $mod+Ctrl+9 rename workspace to 9
-bindsym $mod+Ctrl+0 rename workspace to 10
+bindsym $mod+Ctrl+8 rename workspace to $ws8
+bindsym $mod+Ctrl+9 rename workspace to $ws9
+bindsym $mod+Ctrl+0 rename workspace to $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
