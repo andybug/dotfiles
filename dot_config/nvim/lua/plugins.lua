@@ -18,7 +18,6 @@ local packages = {
   "Mofiqul/dracula.nvim",
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   "nvim-tree/nvim-tree.lua",
@@ -41,29 +40,6 @@ if vim.g.neovide then
     -- snip
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
-    -- neorg
-    {
-      "nvim-neorg/neorg",
-      build = ":Neorg sync-parsers",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      config = function()
-        require("neorg").setup({
-          load = {
-            ["core.defaults"] = {}, -- Loads default behaviour
-            ["core.export"] = {},
-            ["core.concealer"] = {}, -- Adds pretty icons to your documents
-            ["core.dirman"] = { -- Manages Neorg workspaces
-              config = {
-                workspaces = {
-                  notes = "~/docs/neorg",
-                },
-                default_workspace = "notes",
-              },
-            },
-          },
-        })
-      end,
-    },
     -- todo
     {
       "folke/todo-comments.nvim",
