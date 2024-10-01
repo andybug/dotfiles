@@ -1,0 +1,304 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+include /etc/sway/config.d/*
+
+output "*" adaptive_sync on
+output "*" max_render_time 1
+output "*" bg /home/andy/pics/backgrounds/sky-clouds-4k-ja.jpg fill
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Noto Sans Mono,DejaVu Sans Mono,monospace 10
+
+# thin borders
+hide_edge_borders both
+
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,window -show drun"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+e layout toggle split
+
+# sticky
+bindsym $mod+Shift+t sticky toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+set $ws1 "1:web"
+set $ws2 "2:term"
+set $ws8 "8:media"
+set $ws9 "9:games"
+set $ws10 "10:misc"
+
+workspace $ws8 gaps inner 0
+workspace $ws8 gaps outer 0
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# rename workspace
+bindsym $mod+Ctrl+1 rename workspace to $ws1
+bindsym $mod+Ctrl+2 rename workspace to $ws2
+bindsym $mod+Ctrl+3 rename workspace to 3
+bindsym $mod+Ctrl+4 rename workspace to 4
+bindsym $mod+Ctrl+5 rename workspace to 5
+bindsym $mod+Ctrl+6 rename workspace to 6
+bindsym $mod+Ctrl+7 rename workspace to 7
+bindsym $mod+Ctrl+8 rename workspace to $ws8
+bindsym $mod+Ctrl+9 rename workspace to $ws9
+bindsym $mod+Ctrl+0 rename workspace to $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# lock
+bindsym $mod+Shift+z exec "xscreensaver-command -lock"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676e7d
+set $urgent-bg-color     #e53935
+set $indicator-color     #a0a0a0
+
+# set window colors
+#                       border             background         text                 indicator
+client.focused          $bg-color          $bg-color          $text-color          $indicator-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
+
+# floating windows
+# xwininfo
+#   - click on window
+#   - get window id (e.g. 0x1400003)
+# xprop -id 0x1400003
+#   - get class
+for_window [class="Galculator"] floating enable
+for_window [class="KeePassXC"] floating enable
+
+# disable title bars
+for_window [class="^.*"] border pixel 0
+
+# Multimedia Keys
+
+# volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+
+# granular volume control
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+
+# mute
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle && killall -USR1 i3blocks
+
+# backlight
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# bindsym XF86AudioPlay exec mpc toggle
+# bindsym XF86AudioPause exec mpc pause
+# bindsym XF86AudioNext exec mpc next
+# bindsym XF86AudioPrev exec mpc prev
+
+bindsym XF86AudioPlay exec  "playerctl --player spotify,\%any play-pause"
+bindsym XF86AudioPause exec "playerctl --player spotify,\%any play-pause"
+bindsym XF86AudioStop exec  "playerctl --player spotify,\%any stop"
+bindsym XF86AudioNext exec  "playerctl --player spotify,\%any next"
+bindsym XF86AudioPrev exec  "playerctl --player spotify,\%any previous"
+
+# bindsym XF86AudioPlay exec mocp --toggle-pause
+# bindsym XF86AudioPause exec mocp --toggle-pause
+# bindsym XF86AudioStop exec mocp --togle-pause
+# bindsym XF86AudioNext exec mocp --next
+# bindsym XF86AudioPrev exec mocp --previous
+
+# bindsym $mod+F5 exec mocp --toggle-pause
+# bindsym $mod+F6 exec mocp --stop
+# bindsym $mod+F7 exec mocp --previous
+# bindsym $mod+F8 exec mocp --next
+
+bindsym XF86LaunchA exec org.flameshot.Flameshot gui
+bindcode 248 exec org.flameshot.Flameshot screen
+
+# App shortcuts
+# bindsym $mod+w exec "/usr/bin/firefox"
+# bindsym $mod+n exec "/usr/bin/thunar"
+
+# Redirect sound to headphones
+# bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
+
+# gaps
+# smart_gaps on
+gaps inner 30
+gaps outer 10
+# gaps horizontal 20
+# gaps vertical 20
+# gaps top 20
+# gaps right 20
+# gaps bottom 20
+# gaps left 20
+
+bar {
+  status_command    i3status
+  position          bottom
+  mode              hide
+  workspace_buttons yes
+  font              pango:Noto Sans Mono,Droid Sans Mono,monospace 11
+  colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
+}
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+exec dunst
