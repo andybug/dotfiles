@@ -18,3 +18,5 @@
 [merge]
   conflictstyle = diff3
 
+#[core]
+#	askpass = /usr/bin/pinentry-curses
