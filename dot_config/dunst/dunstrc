@@ -245,6 +245,8 @@
     # notification_limit).
     indicate_hidden = yes
 
+    layer = overlay
+
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
 [experimental]
