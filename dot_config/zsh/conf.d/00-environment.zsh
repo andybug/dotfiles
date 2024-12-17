@@ -16,3 +16,9 @@ export LANGUAGE=en_US.UTF-8
 
 # go
 export GOPATH=$HOME/src/go
+
+# nnn
+export NNN_PLUG="v:openmpv"
+
+# ssh
+export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
