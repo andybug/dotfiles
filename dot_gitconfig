@@ -9,8 +9,8 @@
 [push]
 	default = simple
 
-[commit]
-	gpgsign = true
+; [commit]
+; 	gpgsign = false
 
 [init]
 	defaultBranch = main
@@ -18,5 +18,5 @@
 [merge]
   conflictstyle = diff3
 
-#[core]
-#	askpass = /usr/bin/pinentry-curses
+; [core]
+;  	askpass = /usr/bin/pinentry-gtk
