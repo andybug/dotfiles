@@ -6,7 +6,7 @@ include /etc/sway/config.d/*
 
 output "*" adaptive_sync on
 output "*" max_render_time 1
-output "*" bg /home/andy/pics/backgrounds/sky-clouds-4k-ja.jpg fill
+output "*" bg /home/andy/dl/pexels-merlin-10874585.jpg fill
 
 set $mod Mod4
 
@@ -186,6 +186,10 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+# opacity
+bindsym $mod+plus opacity plus 0.1
+bindsym $mod+equal opacity minus 0.1
+
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -266,12 +270,10 @@ bindcode 248 exec org.flameshot.Flameshot screen
 # smart_gaps on
 gaps inner 30
 gaps outer 10
-# gaps horizontal 20
-# gaps vertical 20
-# gaps top 20
-# gaps right 20
-# gaps bottom 20
-# gaps left 20
+
+# bindsym $mod+g gaps inner 
+bindsym $mod+Shift+g exec swaymsg "gaps inner current set 0; gaps outer current set 0;"
+bindsym $mod+g exec swaymsg "gaps inner current set 30; gaps outer current set 10;"
 
 bar {
   status_command    i3status
