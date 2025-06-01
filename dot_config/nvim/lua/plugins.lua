@@ -45,6 +45,14 @@ if vim.g.neovide then
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
     },
+    {
+      "olimorris/codecompanion.nvim",
+      opts = {},
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+    },
     -- language-specific
     "simrat39/rust-tools.nvim",
     {
@@ -218,6 +226,24 @@ if vim.g.neovide then
   -- todo
   require("todo-comments").setup()
 
+  -- codecompanion
+  require("codecompanion").setup({
+    strategies = {
+      chat = {
+        adapter = {
+          name = "ollama",
+          model = "deepseek-r1:14b",
+        }
+      },
+      inline = {
+        adapter = {
+          name = "ollama",
+          model = "deepseek-r1:14b",
+        }
+      },
+    },
+  })
+
   -- rust
   local rt = require("rust-tools")
 
@@ -246,4 +272,7 @@ if vim.g.neovide then
       -- }
     },
   })
+
+  -- python
+  require'lspconfig'.pylsp.setup{}
 end
