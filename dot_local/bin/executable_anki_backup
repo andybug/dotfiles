@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import subprocess
+from pathlib import Path
+
+# --- Singleton values (edit these) ---
+ANKI_ROOT: Path = (
+    Path.home() / ".var" / "app" / "net.ankiweb.Anki" / "data" / "Anki2" / "User 1"
+)
+BACKUP_TARGET: Path = Path.home() / "tmp" / "anki"
+
+# --- Rsync options ---
+RSYNC_OPTIONS = ["-avh", "--delete"]
+
+
+def backup_directory(source: Path, target: Path) -> None:
+    """
+    Run rsync to copy a directory from source to target.
+    """
+    if not source.exists():
+        raise FileNotFoundError(f"Source directory does not exist: {source}")
+    target.mkdir(parents=True, exist_ok=True)
+
+    cmd = ["rsync", *RSYNC_OPTIONS, f"{source}/", f"{target}/"]
+    print(f"Running: {' '.join(cmd)}")
+    subprocess.run(cmd, check=True)
+
+
+def main() -> None:
+    print("Starting Anki backup...")
+
+    # Paths to backup
+    media_src = ANKI_ROOT / "collection.media"
+    media_dst = BACKUP_TARGET / "collection.media"
+
+    backups_src = ANKI_ROOT / "backups"
+    backups_dst = BACKUP_TARGET / "backups"
+
+    # Perform backups
+    backup_directory(media_src, media_dst)
+    backup_directory(backups_src, backups_dst)
+
+    print("Backup complete.")
+
+if __name__ == "__main__":
+    main()
