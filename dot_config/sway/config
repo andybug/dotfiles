@@ -190,6 +190,10 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+plus opacity plus 0.1
 bindsym $mod+equal opacity minus 0.1
 
+# screenshots
+bindcode 248 exec sh -c 'grim ~/dl/screenshot_$(date "+%Y-%m-%dT%H-%M-%S").png && notify-send "Screenshot saved"'
+bindsym XF86LaunchA exec sh -c 'grim -g "$(slurp)" ~/dl/screenshot_$(date "+%Y-%m-%dT%H-%M-%S").png && notify-send "Screenshot saved"'
+bindsym Shift+XF86LaunchA exec sh -c 'grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot copied to clipboard"'
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -256,9 +260,6 @@ bindsym XF86AudioPrev exec  "playerctl --player spotify,\%any previous"
 # bindsym $mod+F7 exec mocp --previous
 # bindsym $mod+F8 exec mocp --next
 
-bindsym XF86LaunchA exec org.flameshot.Flameshot gui
-bindcode 248 exec org.flameshot.Flameshot screen
-
 # App shortcuts
 # bindsym $mod+w exec "/usr/bin/firefox"
 # bindsym $mod+n exec "/usr/bin/thunar"
@@ -304,3 +305,4 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 exec dunst
+exec fcitx5
