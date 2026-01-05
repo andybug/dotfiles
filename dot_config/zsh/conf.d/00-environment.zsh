@@ -21,4 +21,7 @@ export GOPATH=$HOME/src/go
 export NNN_PLUG="v:openmpv"
 
 # ssh
-export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
+export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
+
+# dbus
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
